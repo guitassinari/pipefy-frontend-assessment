@@ -4,6 +4,7 @@ import App from './App';
 import { Queries } from './api';
 import { MockedProvider } from '@apollo/client/testing'
 import { Apollo as ApolloTestUtils } from './test-utils'
+import { MODAL_PORTAL_ID } from 'components/modal-portal'
 
 describe('App', () => {
 
@@ -15,7 +16,7 @@ describe('App', () => {
     )
     const modalPortal = component.getByRole("dialog")
     expect(modalPortal).toBeInTheDocument()
-    expect(modalPortal.id).toEqual("modal-portal")
+    expect(modalPortal.id).toEqual(MODAL_PORTAL_ID)
   })
 
 
