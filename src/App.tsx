@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
 import { useQuery } from '@apollo/client'
 import { Queries } from './api'
 import PipeList from 'components/pipe-list';
+import { AppContainer, MainContent } from './App.styles'
 
 function App() {
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
@@ -20,11 +20,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <main>
+    <AppContainer>
+      <MainContent>
         <PipeList pipes={data.organization.pipes} />
-      </main>
-    </div>
+      </MainContent>
+    </AppContainer>
   );
 }
 
