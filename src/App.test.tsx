@@ -6,6 +6,19 @@ import { MockedProvider } from '@apollo/client/testing'
 import { Apollo as ApolloTestUtils } from './test-utils'
 
 describe('App', () => {
+
+  it('renders a portal element for modals', () => {
+    const component = render(
+      <MockedProvider>
+        <App />
+      </MockedProvider>
+    )
+    const modalPortal = component.getByRole("dialog")
+    expect(modalPortal).toBeInTheDocument()
+    expect(modalPortal.id).toEqual("modal-portal")
+  })
+
+
   describe('When the organization query is', () => {
     describe('resolved and successfull', () => {
       const QUERY_MOCKS = [
