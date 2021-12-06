@@ -1,16 +1,21 @@
 import React from 'react';
 import './App.css';
+import { useQuery } from '@apollo/client'
+import { Queries } from './graphql'
+import { Pipe } from './graphql/types';
 
 function App() {
+  const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
+    variables: {
+      id: 300562393
+    }
+  })  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img
-          src="https://files.readme.io/9e810f9-small-developers3x.png"
-          className="App-logo"
-          alt="logo"
-        />
-      </header>
+      <main>
+        {!loading && data.organization.pipes.map((pipe: Pipe, index: number) => (<div key={index}>{pipe.name}</div>))}
+      </main>
     </div>
   );
 }
