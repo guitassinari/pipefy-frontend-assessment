@@ -7,6 +7,7 @@ const GET_ORGANIZATION = gql`
       name
       pipes {
         name
+        color
       }
     }
   }

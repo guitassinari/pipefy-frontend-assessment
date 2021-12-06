@@ -3,7 +3,8 @@ export const getOrganizationSuccess = {
     id: 300562393,
     name: 'Test organization',
     pipes: [{
-      name: 'Test pipe'
+      name: 'Test pipe',
+      color: 'blue'
     }]
   }
 }

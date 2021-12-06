@@ -74,7 +74,7 @@ describe('App', () => {
         }
       ]
 
-      it('shows a loading message', async () => {
+      it('shows a error message', async () => {
         const { getByText } = render(
           <MockedProvider mocks={QUERY_MOCKS}>
             <App />

@@ -2,7 +2,9 @@
 
 exports[`PipeTile when receives a valid pipe matches the snapshot 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="sc-bdvvtL kfAtnd"
+  >
     A pipe
   </div>
 </DocumentFragment>
