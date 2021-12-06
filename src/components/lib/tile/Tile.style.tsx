@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
-
-interface TileProps {
+interface TileBackgroundProps {
   bgColor?: string
 }
 
-export const Tile = styled.div<TileProps>`
+export const TileBackground = styled.div<TileBackgroundProps>`
   background-color: ${props => (props.bgColor ? props.bgColor : '#c7c7c7')};
   display: flex;
   align-items: center;
@@ -16,6 +15,10 @@ export const Tile = styled.div<TileProps>`
   font-weight: bold;
   text-align: center;
   position: relative;
+
+  & * {
+    z-index: 1;
+  }
 
   &:before {
     content: '';

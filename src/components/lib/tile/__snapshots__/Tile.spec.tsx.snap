@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PipeTile allows custom styling 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL flRYvv className"
+  >
+    <div>
+      Teste
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PipeTile allows setting the background color 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL fFSuzC"
+  >
+    <div>
+      Teste
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PipeTile matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL flRYvv"
+  >
+    <div>
+      Teste
+    </div>
+  </div>
+</DocumentFragment>
+`;

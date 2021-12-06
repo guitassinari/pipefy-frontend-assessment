@@ -6,9 +6,11 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
     class="sc-gsDKAQ gHYpLK"
   >
     <div
-      class="sc-bdvvtL bZsBFc"
+      class="sc-bdvvtL fFSuzC"
     >
-      A pipe
+      <div>
+        A pipe
+      </div>
     </div>
   </ul>
 </DocumentFragment>

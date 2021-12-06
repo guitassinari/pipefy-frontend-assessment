@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Types } from 'api'
-import { Tile } from './PipeTile.styles'
+import Tile from 'components/lib/tile'
 
 interface PipeTileProps {
   pipe: Types.Pipe
