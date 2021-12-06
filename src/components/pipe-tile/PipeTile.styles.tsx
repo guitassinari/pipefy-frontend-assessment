@@ -14,6 +14,7 @@ export const Tile = styled.div<TileProps>`
   border-radius: 10px;
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
   position: relative;
 
   &:before {
