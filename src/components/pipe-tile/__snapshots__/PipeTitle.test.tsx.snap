@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PipeTile when receives a valid pipe matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    A pipe
+  </div>
+</DocumentFragment>
+`;

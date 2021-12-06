@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import { useQuery } from '@apollo/client'
-import { Queries } from './graphql'
-import { Pipe } from './graphql/types';
+import { Queries, Types } from './api'
 
 function App() {
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
@@ -22,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        {data.organization.pipes.map((pipe: Pipe, index: number) => (
+        {data.organization.pipes.map((pipe: Types.Pipe, index: number) => (
           <div key={index}>{pipe.name}</div>
         ))}
       </main>

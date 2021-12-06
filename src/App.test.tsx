@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, render } from '@testing-library/react';
 import App from './App';
-import { Queries } from './graphql';
+import { Queries } from './api';
 import { MockedProvider } from '@apollo/client/testing'
 import { Apollo as ApolloTestUtils } from './test-utils'
 
