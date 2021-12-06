@@ -7,7 +7,10 @@ interface PipeTileProps {
 }
 
 const PipeTile: FC<PipeTileProps> = ({ pipe }) => (
-  <Tile bgColor={pipe.color}>{pipe.name}</Tile>
+  <Tile bgColor={pipe.color}>
+    <div>{pipe.name}</div>
+    <small>{pipe.cards_count} cards</small>
+  </Tile>
 )
 
 export default PipeTile

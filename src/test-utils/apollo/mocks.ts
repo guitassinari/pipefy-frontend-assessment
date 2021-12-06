@@ -4,7 +4,8 @@ export const getOrganizationSuccess = {
     name: 'Test organization',
     pipes: [{
       name: 'Test pipe',
-      color: 'blue'
+      color: 'blue',
+      cards_count: 10
     }]
   }
 }

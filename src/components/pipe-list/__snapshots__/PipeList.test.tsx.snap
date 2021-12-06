@@ -9,7 +9,12 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
       class="sc-bdvvtL fFSuzC"
     >
       <div>
-        A pipe
+        <div>
+          A pipe
+        </div>
+        <small>
+           cards
+        </small>
       </div>
     </div>
   </ul>

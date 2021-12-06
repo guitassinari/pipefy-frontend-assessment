@@ -8,6 +8,7 @@ const GET_ORGANIZATION = gql`
       pipes {
         name
         color
+        cards_count
       }
     }
   }
