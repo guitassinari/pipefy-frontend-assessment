@@ -3,10 +3,15 @@
 exports[`PipeTile when receives a valid pipe matches the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL flRYvv"
+    class="sc-bdvvtL fFSuzC"
   >
     <div>
-      A pipe
+      <div>
+        A pipe
+      </div>
+      <small>
+        10 cards
+      </small>
     </div>
   </div>
 </DocumentFragment>

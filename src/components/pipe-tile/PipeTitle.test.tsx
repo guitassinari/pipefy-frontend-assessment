@@ -6,7 +6,9 @@ import PipeTile from '.';
 describe('PipeTile', () => {
   describe('when receives a valid pipe', () => {
     const pipe: Types.Pipe = {
-      name: 'A pipe'
+      name: 'A pipe',
+      color: 'blue',
+      cards_count: 10
     }
 
     it('matches the snapshot', () => {
@@ -19,6 +21,12 @@ describe('PipeTile', () => {
       const component = render(<PipeTile pipe={pipe} />)
   
       expect(component.getByText(pipe.name)).toBeInTheDocument()
+    })
+
+    it('shows the number of cards in the pipe', () => {
+      const component = render(<PipeTile pipe={pipe} />)
+  
+      expect(component.getByText(`${pipe.cards_count} cards`)).toBeInTheDocument()
     })
   })
 })
