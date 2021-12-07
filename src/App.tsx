@@ -34,7 +34,6 @@ function App() {
   return (
     <AppContainer>
       {content}
-      <Modal primaryAction={() => console.log('HEY')}>Teste</Modal>
       <ModalPortal />
     </AppContainer>
   );

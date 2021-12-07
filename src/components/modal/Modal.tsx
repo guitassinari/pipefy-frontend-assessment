@@ -1,5 +1,4 @@
-import { HTMLAttributes } from 'hoist-non-react-statics/node_modules/@types/react'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import ReactDOM from 'react-dom'
 import {default as DesignSystemModal} from 'components/lib/modal'
 import { MODAL_PORTAL_ID } from 'components/modal-portal'
