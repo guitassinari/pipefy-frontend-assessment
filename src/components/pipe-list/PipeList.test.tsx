@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import PipeList from '.'
 import { Types } from 'api';
 
@@ -7,7 +7,8 @@ describe('PipeList', () => {
   describe('When receives a valid list of pipes', () => {
     const pipes: Types.Pipe[] = [{
       name: 'A pipe',
-      color: 'blue'
+      color: 'blue',
+      cards_count: 10
     }]
 
     it('matches snapshot', () => {

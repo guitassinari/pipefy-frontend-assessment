@@ -13,7 +13,7 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
           A pipe
         </div>
         <small>
-           cards
+          10 cards
         </small>
       </div>
     </div>

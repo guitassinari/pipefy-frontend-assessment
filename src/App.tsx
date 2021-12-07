@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client'
 import { Queries } from './api'
 import PipeList from 'components/pipe-list';
 import { AppContainer, MainContent } from './App.styles'
+import ModalPortal from 'components/modal-portal';
+import Modal from 'components/modal'
 
 function App() {
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
@@ -10,20 +12,29 @@ function App() {
       id: 300562393
     }
   })
+  
+  let content
 
   if(loading) {
-    return <div>Please wait. We're loading your pipes.</div>
+    content = <div>Please wait. We're loading your pipes.</div>
   }
 
   if(error) {
-    return <div>Oops. Something went wrong!</div>
+    content = <div>Oops. Something went wrong!</div>
+  }
+
+  if(!error && !loading) {
+    content = (
+      <MainContent>
+        <PipeList pipes={data.organization.pipes} />
+      </MainContent>
+    )
   }
 
   return (
     <AppContainer>
-      <MainContent>
-        <PipeList pipes={data.organization.pipes} />
-      </MainContent>
+      {content}
+      <ModalPortal />
     </AppContainer>
   );
 }
