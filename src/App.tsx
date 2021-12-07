@@ -4,6 +4,7 @@ import { Queries } from './api'
 import PipeList from 'components/pipe-list';
 import { AppContainer, MainContent } from './App.styles'
 import ModalPortal from 'components/modal-portal';
+import Modal from 'components/modal'
 
 function App() {
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
@@ -33,6 +34,7 @@ function App() {
   return (
     <AppContainer>
       {content}
+      <Modal primaryAction={() => console.log('HEY')}>Teste</Modal>
       <ModalPortal />
     </AppContainer>
   );

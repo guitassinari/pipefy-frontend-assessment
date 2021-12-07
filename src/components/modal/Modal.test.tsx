@@ -6,14 +6,10 @@ import { within } from '@testing-library/dom'
 
 describe('Modal', () => {
   describe('when the modal portal doesnt exist', () => {
-    it('throws an error', () => {
-      // https://stackoverflow.com/questions/66328549/testing-error-thrown-by-a-react-component-using-testing-library-and-jest
-      const originalConsole = console.error
-      console.error = jest.fn()
+    it('returns null', () => {
+      const component = render(<Modal>Teste</Modal>)
 
-      expect(() => render(<Modal />)).toThrow()
-
-      console.error = originalConsole
+      expect(component.queryByText('Test')).not.toBeInTheDocument()
     })
   })
 

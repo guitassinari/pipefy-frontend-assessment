@@ -2,8 +2,17 @@
 
 exports[`Modal matches snapshot 1`] = `
 <DocumentFragment>
-  <div>
-    Modal test
+  <div
+    class="sc-bdvvtL hbExxv"
+  >
+    <div
+      class="sc-gsDKAQ bucHQF"
+    >
+      Modal test
+    </div>
+    <div
+      class="sc-dkPtRN deWUNs"
+    />
   </div>
 </DocumentFragment>
 `;

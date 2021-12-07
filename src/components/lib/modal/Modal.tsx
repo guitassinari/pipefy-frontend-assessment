@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'hoist-non-react-statics/node_modules/@types/react'
 import React from 'react'
+import { ModalCard, ModalContent, ModalActionsFooter } from './Modal.styles'
 
 interface ModalProps {
   primaryAction?: () => any
@@ -7,14 +8,18 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({ children, primaryAction, customPrimaryActionText}) => (
-  <div>
-    {children}
-    {primaryAction && (
-      <button onClick={() => primaryAction()} role="button">
-        {customPrimaryActionText || 'Close'}
-      </button>
-    )}
-  </div>
+  <ModalCard>
+    <ModalContent>
+      {children}
+    </ModalContent>
+    <ModalActionsFooter>
+      {primaryAction && (
+        <button onClick={() => primaryAction()} role="button">
+          {customPrimaryActionText || 'Close'}
+        </button>
+      )}
+    </ModalActionsFooter>
+  </ModalCard>
 )
 
 export default Modal
