@@ -4,9 +4,11 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
 <DocumentFragment>
   <ul
     class="sc-gsDKAQ fqXist"
+    role="grid"
   >
     <div
       class="sc-bdvvtL fFSuzC"
+      role="gridcell"
     >
       <div>
         <div>

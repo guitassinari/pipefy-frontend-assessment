@@ -5,6 +5,8 @@ import PipeList from 'components/pipe-list';
 import { AppContainer, MainContent } from './App.styles'
 import ModalPortal from 'components/modal-portal';
 import Modal from 'components/modal'
+import { Pipe } from 'api/types';
+import { sortByName } from 'utils/pipes';
 
 function App() {
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
@@ -24,9 +26,12 @@ function App() {
   }
 
   if(!error && !loading) {
+    const pipes: Pipe[] = data.organization.pipes
+    const pipesSortedByName = sortByName(pipes)
+
     content = (
       <MainContent>
-        <PipeList pipes={data.organization.pipes} />
+        <PipeList pipes={pipesSortedByName} />
       </MainContent>
     )
   }

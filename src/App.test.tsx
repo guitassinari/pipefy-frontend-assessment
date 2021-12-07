@@ -34,21 +34,24 @@ describe('App', () => {
         }
       ]
   
-      it('shows a list of the organization pipes', async () => {
-        const { getByText } = render(
+      it('shows a list of the organization pipes sorted by name', async () => {
+        const { getAllByRole } = render(
           <MockedProvider mocks={QUERY_MOCKS}>
             <App />
           </MockedProvider>
         )
   
-        const pipes = ApolloTestUtils.mocks.getOrganizationSuccess.organization.pipes      
-  
+        const pipes = ApolloTestUtils.mocks.getOrganizationSuccess.organization.pipes     
+        
         await act(async () => {
           await ApolloTestUtils.waitForApolloQueryToResolve()
         })
-  
-        pipes.forEach(pipe => {
-          expect(getByText(pipe.name)).toBeInTheDocument()
+
+        const pipeTiles = getAllByRole('gridcell')
+        const sortedPipes = pipes.sort((a, b) => a.name > b.name && 1 || -1) 
+
+        pipeTiles.forEach((pipeTile, index) => {
+          expect(pipeTile.textContent).toContain(sortedPipes[index].name)
         })
       })
     })
