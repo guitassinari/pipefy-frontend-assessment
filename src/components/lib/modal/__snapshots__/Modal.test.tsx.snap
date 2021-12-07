@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    Modal test
+  </div>
+</DocumentFragment>
+`;

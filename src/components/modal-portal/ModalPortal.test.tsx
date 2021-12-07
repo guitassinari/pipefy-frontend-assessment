@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react'
-import { Types } from 'api'
 import ModalPortal from '.';
 
 describe('ModalPortal', () => {
