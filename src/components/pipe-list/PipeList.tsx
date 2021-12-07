@@ -8,9 +8,9 @@ interface PipeListProps {
 }
 
 const PipeList: FC<PipeListProps> = ({ pipes }) => (
-  <PipeListContainer>
+  <PipeListContainer role="grid">
     {pipes.map((pipe: Types.Pipe, index: number) => (
-      <PipeTile key={index} pipe={pipe} />
+      <PipeTile role="gridcell" key={index} pipe={pipe} />
     ))}
   </PipeListContainer>
 )
