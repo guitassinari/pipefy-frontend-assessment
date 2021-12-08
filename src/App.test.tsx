@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
+import { act, render, fireEvent, within } from '@testing-library/react';
 import App from './App';
 import { Queries } from './api';
 import { MockedProvider } from '@apollo/client/testing'
@@ -19,7 +19,6 @@ describe('App', () => {
     expect(modalPortal.id).toEqual(MODAL_PORTAL_ID)
   })
 
-
   describe('When the organization query is', () => {
     describe('resolved and successfull', () => {
       const QUERY_MOCKS = [
@@ -30,6 +29,17 @@ describe('App', () => {
           },
           result: {
             data: ApolloTestUtils.mocks.getOrganizationSuccess
+          }
+        },
+        {
+          request: {
+            query: Queries.GET_PIPE_CARDS,
+            variables: {
+              pipeId: ApolloTestUtils.mocks.getOrganizationSuccess.organization.pipes[0].id
+            }
+          },
+          result: {
+            data: ApolloTestUtils.mocks.getPipeCardsSuccess
           }
         }
       ]
@@ -48,10 +58,39 @@ describe('App', () => {
         })
 
         const pipeTiles = getAllByRole('gridcell')
-        const sortedPipes = pipes.sort((a, b) => a.name > b.name && 1 || -1) 
+        const sortedPipes = pipes.slice().sort((a, b) => a.name > b.name && 1 || -1) 
 
         pipeTiles.forEach((pipeTile, index) => {
           expect(pipeTile.textContent).toContain(sortedPipes[index].name)
+        })
+      })
+
+      describe('when a pipe is clicked', () => {
+        it('loads the cards for that pipe and shows it in a modal', async () => {
+          const { getByText } = render(
+            <MockedProvider mocks={QUERY_MOCKS}>
+              <App />
+            </MockedProvider>
+          )
+              
+          await act(async () => {
+            await ApolloTestUtils.waitForApolloQueryToResolve()
+          })
+
+          const pipes = ApolloTestUtils.mocks.getOrganizationSuccess.organization.pipes     
+          const pipeTile = getByText(pipes[0].name)
+
+          fireEvent.click(pipeTile)
+
+          await act(async () => {
+            await ApolloTestUtils.waitForApolloQueryToResolve()
+          })
+
+          const cards = ApolloTestUtils.mocks.getPipeCardsSuccess.cards.edges.map(edge => edge.node)
+
+          cards.forEach(card => {
+            expect(getByText(card.title)).toBeInTheDocument()
+          })
         })
       })
     })

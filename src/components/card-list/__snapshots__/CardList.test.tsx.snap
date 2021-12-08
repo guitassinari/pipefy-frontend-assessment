@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="sc-gsDKAQ fqXist"
+    role="grid"
+  >
+    <div
+      class="sc-bdvvtL flRYvv"
+      role="gridcell"
+    >
+      <div>
+        <div>
+          a card
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-bdvvtL flRYvv"
+      role="gridcell"
+    >
+      <div>
+        <div>
+          another card
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-bdvvtL flRYvv"
+      role="gridcell"
+    >
+      <div>
+        <div>
+          YET another card
+        </div>
+      </div>
+    </div>
+  </ul>
+</DocumentFragment>
+`;

@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import { useQuery } from '@apollo/client'
 import { Queries } from './api'
 import PipeList from 'components/pipe-list';
 import { AppContainer, MainContent } from './App.styles'
 import ModalPortal from 'components/modal-portal';
-import Modal from 'components/modal'
+import PipeCardsModal from 'components/pipe-cards-modal';
 import { Pipe } from 'api/types';
 import { sortByName } from 'utils/pipes';
 
 function App() {
+  const [currentlySelectedPipe, setSelectedPipe] = useState<Pipe>()
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
     variables: {
       id: 300562393
@@ -31,7 +32,7 @@ function App() {
 
     content = (
       <MainContent>
-        <PipeList pipes={pipesSortedByName} />
+        <PipeList onClick={(pipe) => setSelectedPipe(pipe)} pipes={pipesSortedByName} />
       </MainContent>
     )
   }
@@ -39,6 +40,7 @@ function App() {
   return (
     <AppContainer>
       {content}
+      {currentlySelectedPipe && <PipeCardsModal pipe={currentlySelectedPipe} />}
       <ModalPortal />
     </AppContainer>
   );

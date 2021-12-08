@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import PipeList from '.'
 import { Types } from 'api';
 
@@ -8,7 +8,8 @@ describe('PipeList', () => {
     const pipes: Types.Pipe[] = [{
       name: 'A pipe',
       color: 'blue',
-      cards_count: 10
+      cards_count: 10,
+      id: 1
     }]
 
     it('matches snapshot', () => {
@@ -22,6 +23,19 @@ describe('PipeList', () => {
 
       pipes.forEach(pipe => {
         expect(getByText(pipe.name)).toBeInTheDocument()
+      })
+    })
+
+    describe('when receives onClick prop', () => {
+      describe('and a pipe is clicked', () => {
+        it('calls the onClick callback with that pipe', () => {
+          const onClickCallback = jest.fn()
+          const { getByText } = render(<PipeList onClick={onClickCallback} pipes={pipes} />)
+
+          fireEvent.click(getByText(pipes[0].name))
+
+          expect(onClickCallback).toHaveBeenCalledWith(pipes[0])
+        })
       })
     })
   })
