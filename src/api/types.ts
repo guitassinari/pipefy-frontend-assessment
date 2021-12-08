@@ -4,3 +4,7 @@ export type Pipe = {
   cards_count: number
   id: number
 }
+
+export type Card = {
+  title: string
+}

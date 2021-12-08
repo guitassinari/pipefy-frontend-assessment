@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardTile when receives a valid pipe matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL flRYvv"
+  >
+    <div>
+      <div>
+        a card
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

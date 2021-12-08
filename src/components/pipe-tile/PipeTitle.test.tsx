@@ -8,7 +8,8 @@ describe('PipeTile', () => {
     const pipe: Types.Pipe = {
       name: 'A pipe',
       color: 'blue',
-      cards_count: 10
+      cards_count: 10,
+      id: 1
     }
 
     it('matches the snapshot', () => {

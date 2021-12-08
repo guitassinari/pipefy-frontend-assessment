@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 import { Queries } from 'api'
 import Modal from 'components/modal'
 import { Pipe } from 'api/types';
+import CardTile from 'components/card-tile';
 
 interface PipeCardsModalProps {
   pipe: Pipe
@@ -15,25 +16,26 @@ const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe }) => {
     }
   })
 
+  let content
+
   if(loading) {
-    return <div>Please wait. We're loading your cards.</div>
+    content = <div>Please wait. We're loading your cards.</div>
   }
 
   if(error) {
-    return <div>Oops. Something went wrong!</div>
+    content = <div>Oops. Something went wrong!</div>
   }
 
-  const cards = data.cards.edges.map((edge: any) => edge.node)
+  if(!error && !loading) {
+    const cards = data.cards.edges.map((edge: any) => edge.node)
+    content = cards.map((card: any, index: number) => (
+      <CardTile card={card} key={index} role="gridcell" />
+    ))
+  }
 
   return (
     <Modal>
-      <Fragment>
-        {cards.map((card: any, index: number) => (
-          <div key={index} role="gridcell">
-            {card.title}
-          </div>
-        ))}
-      </Fragment>
+      {content}
     </Modal>
   )
 }
