@@ -6,6 +6,7 @@ const GET_ORGANIZATION = gql`
       id
       name
       pipes {
+        id
         name
         color
         cards_count
@@ -14,6 +15,19 @@ const GET_ORGANIZATION = gql`
   }
 `
 
+const GET_PIPE_CARDS = gql`
+  query GetPipeCards($pipeId: ID!) {
+    cards(pipe_id: $pipeId) {
+      edges {
+        node {
+          title
+        }
+      }
+    }
+  }
+`
+
 export default {
-  GET_ORGANIZATION
+  GET_ORGANIZATION,
+  GET_PIPE_CARDS
 }
