@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import Modal from '.';
 import { MODAL_PORTAL_ID } from 'components/modal-portal';
 import { within } from '@testing-library/dom'
+import { Modal as ModalTestUtils } from 'test-utils'
 
 describe('Modal', () => {
   describe('when the modal portal doesnt exist', () => {
@@ -14,13 +15,8 @@ describe('Modal', () => {
   })
 
   describe('when the modal portal exists', () => {
-    beforeEach(() => {
-      document.body.innerHTML = `<div role="dialog" id="${MODAL_PORTAL_ID}" />`
-    }) 
-
-    afterEach(() => {
-      document.body.innerHTML = ''
-    })
+    beforeEach(() => ModalTestUtils.addModalPortalToDocument()) 
+    afterEach(() => ModalTestUtils.removeModalPortalFromDocument())
 
     it('renders the modal inside react modal portal', () => {
       const component = render(<Modal>Test content</Modal>)
