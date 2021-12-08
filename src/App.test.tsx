@@ -67,7 +67,7 @@ describe('App', () => {
 
       describe('when a pipe is clicked', () => {
         it('loads the cards for that pipe and shows it in a modal', async () => {
-          const { getByText, getByRole } = render(
+          const { getByText } = render(
             <MockedProvider mocks={QUERY_MOCKS}>
               <App />
             </MockedProvider>
@@ -86,16 +86,11 @@ describe('App', () => {
             await ApolloTestUtils.waitForApolloQueryToResolve()
           })
 
-          const modalPortal = within(getByRole("dialog"))
-          const cardsComponents = modalPortal.getAllByRole('gridcell')
-
           const cards = ApolloTestUtils.mocks.getPipeCardsSuccess.cards.edges.map(edge => edge.node)
-          expect(cardsComponents.length).toEqual(cards.length)
 
           cards.forEach(card => {
-            expect(modalPortal.getByText(card.title)).toBeInTheDocument()
+            expect(getByText(card.title)).toBeInTheDocument()
           })
-
         })
       })
     })

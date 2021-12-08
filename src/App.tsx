@@ -4,43 +4,9 @@ import { Queries } from './api'
 import PipeList from 'components/pipe-list';
 import { AppContainer, MainContent } from './App.styles'
 import ModalPortal from 'components/modal-portal';
-import Modal from 'components/modal'
+import PipeCardsModal from 'components/pipe-cards-modal';
 import { Pipe } from 'api/types';
 import { sortByName } from 'utils/pipes';
-
-interface PipeCardsModalProps {
-  pipe: Pipe
-}
-
-const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe }) => {
-  const { loading, error, data } = useQuery(Queries.GET_PIPE_CARDS, {
-    variables: {
-      pipeId: pipe.id
-    }
-  })
-
-  if(loading) {
-    return null
-  }
-
-  if(error) {
-    return null
-  }
-
-  const cards = data.cards.edges.map((edge: any) => edge.node)
-
-  return (
-    <Modal>
-      <Fragment>
-        {cards.map((card: any, index: number) => (
-          <div key={index} role="gridcell">
-            {card.title}
-          </div>
-        ))}
-      </Fragment>
-    </Modal>
-  )
-}
 
 function App() {
   const [currentlySelectedPipe, setSelectedPipe] = useState<Pipe>()
