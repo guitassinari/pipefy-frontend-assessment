@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import {  Types } from 'api'
+import { Types } from 'api'
 import PipeTile from 'components/pipe-tile';
 import { PipeListContainer } from './PipeList.styles'
 

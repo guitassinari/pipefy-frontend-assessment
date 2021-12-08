@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import { Queries } from 'api'
 import Modal from 'components/modal'
 import { Pipe } from 'api/types';
-import CardTile from 'components/card-tile';
+import CardList from 'components/card-list';
 
 interface PipeCardsModalProps {
   pipe: Pipe
@@ -28,9 +28,7 @@ const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe }) => {
 
   if(!error && !loading) {
     const cards = data.cards.edges.map((edge: any) => edge.node)
-    content = cards.map((card: any, index: number) => (
-      <CardTile card={card} key={index} role="gridcell" />
-    ))
+    content = <CardList cards={cards} />
   }
 
   return (
