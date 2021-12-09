@@ -9,7 +9,7 @@ import { Pipe } from 'api/types';
 import { sortByName } from 'utils/pipes';
 
 function App() {
-  const [currentlySelectedPipe, setSelectedPipe] = useState<Pipe>()
+  const [currentlySelectedPipe, setSelectedPipe] = useState<Pipe | null>()
   const { loading, error, data } = useQuery(Queries.GET_ORGANIZATION, {
     variables: {
       id: 300562393
@@ -40,7 +40,7 @@ function App() {
   return (
     <AppContainer>
       {content}
-      {currentlySelectedPipe && <PipeCardsModal pipe={currentlySelectedPipe} />}
+      {currentlySelectedPipe && <PipeCardsModal onClose={() => setSelectedPipe(null)} pipe={currentlySelectedPipe} />}
       <ModalPortal />
     </AppContainer>
   );

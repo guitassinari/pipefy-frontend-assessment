@@ -35,7 +35,8 @@ describe('App', () => {
           request: {
             query: Queries.GET_PIPE_CARDS,
             variables: {
-              pipeId: ApolloTestUtils.mocks.getOrganizationSuccess.organization.pipes[0].id
+              pipeId: ApolloTestUtils.mocks.getOrganizationSuccess.organization.pipes[0].id,
+              pageSize: 5
             }
           },
           result: {

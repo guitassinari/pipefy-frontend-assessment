@@ -15,6 +15,7 @@ export const TileBackground = styled.div<TileBackgroundProps>`
   font-weight: bold;
   text-align: center;
   position: relative;
+  cursor: ${props => props.onClick ? 'pointer' : 'inherit'};
 
   & * {
     z-index: 1;

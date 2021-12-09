@@ -23,9 +23,29 @@ export const getOrganizationSuccess = {
 
 export const getPipeCardsSuccess = {
   cards: {
+    pageInfo: {
+      hasNextPage: true,
+      endCursor: 'a-cursor'
+    },
     edges: [{
+      cursor: 'a-cursor',
       node: {
         title: 'Card 1'
+      }
+    }]
+  }
+}
+
+export const getPipeCardsSuccessPage2 = {
+  cards: {
+    pageInfo: {
+      hasNextPage: false,
+      endCursor: 'a-cursor-2'
+    },
+    edges: [{
+      cursor: 'a-cursor-2',
+      node: {
+        title: 'Card 2'
       }
     }]
   }

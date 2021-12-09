@@ -8,3 +8,8 @@ export type Pipe = {
 export type Card = {
   title: string
 }
+
+export type CardConnetionEdge = {
+  node: Card
+  cursor: string
+}

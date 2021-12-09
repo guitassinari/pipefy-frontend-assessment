@@ -60,6 +60,35 @@ describe('Modal', () => {
         })
       })
     })
-  })
+
+    describe('when the modal is clicked', () => {
+      it('doesnt trigger the onClose callback', () => {
+        const onCloseCallback = jest.fn()
+        const component = render(
+          <Modal onClose={onCloseCallback}>
+            Modal test
+          </Modal>
+        )
   
+        fireEvent.click(component.getByText('Modal test'))
+  
+        expect(onCloseCallback).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('when the backdrop is clicked', () => {
+      it('calls the onClose callback', () => {
+        const onCloseCallback = jest.fn()
+        const component = render(
+          <Modal onClose={onCloseCallback}>
+            Modal test
+          </Modal>
+        )
+  
+        fireEvent.click(component.getByTestId('backdrop'))
+  
+        expect(onCloseCallback).toHaveBeenCalled()
+      })
+    })
+  }) 
 })
