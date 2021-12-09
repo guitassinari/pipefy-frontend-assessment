@@ -13,11 +13,25 @@ interface PipeCardsModalProps extends ModalProps {
 const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe, ...rest }) => {
   const [cards, setCards] = useState<Card[]>([])
   const { loading, error, data, fetchMore } = useQuery(Queries.GET_PIPE_CARDS, {
+    fetchPolicy: 'network-only',
     variables: {
       pipeId: pipe.id,
       pageSize: 5
     }
   })
+
+  const fetchNextPage = () => {
+    if(!data.cards.pageInfo.hasNextPage) {
+      return
+    }
+
+    fetchMore({
+      updateQuery: (_, { fetchMoreResult }) => fetchMoreResult,
+      variables: {
+        startAtCursor: data.cards.pageInfo.endCursor
+      }
+    })
+  }
 
   useEffect(() => {
     if(loading || error) {
@@ -42,18 +56,7 @@ const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe, ...rest }) => {
   }
 
   return (
-    <Modal {...rest} primaryAction={() => {
-        if(!data.cards.pageInfo.hasNextPage) {
-          return
-        }
-        fetchMore({
-          updateQuery: (_, { fetchMoreResult }) => fetchMoreResult,
-          variables: {
-            startAtCursor: data.cards.pageInfo.endCursor
-          }
-        })
-      }
-    } customPrimaryActionText="Show more">
+    <Modal {...rest} primaryAction={() => fetchNextPage()} customPrimaryActionText="Show more">
       <CardList cards={cards} />
     </Modal>
   )
