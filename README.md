@@ -1,5 +1,6 @@
 # Test Coverage
 
+![image](https://user-images.githubusercontent.com/10967861/145315426-984eba70-02ec-4276-b181-605a0776ca3d.png)
 
 # The Assessment
 This assessment was build to validate your developer skills using our main stack (React + GraphQL). Keep in mind that UI and performance walk together to deliver the best experience.
