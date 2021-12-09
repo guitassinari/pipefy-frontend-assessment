@@ -62,7 +62,7 @@ describe('PipeCardsModal', () => {
       })
 
       describe('when the "Show more" button is clicked', () => {
-        it('fetches the next page of cards and display them along with the preivous ones', async () => {
+        it.only('fetches the next page of cards and display them along with the preivous ones', async () => {
           const { getAllByRole, getByRole, getByText } = render(
             <MockedProvider mocks={QUERY_MOCKS}>
               <PipeCardsModal pipe={pipe} />
@@ -80,12 +80,17 @@ describe('PipeCardsModal', () => {
             await ApolloTestUtils.waitForApolloQueryToResolve()
           })
 
+          await act(async () => {
+            await ApolloTestUtils.waitForApolloQueryToResolve()
+          })
+
           const cardsComponents = getAllByRole('gridcell')
 
           const allCardsFromBothPages = [
             ...ApolloTestUtils.mocks.getPipeCardsSuccess.cards.edges.map(edge => edge.node),
             ...ApolloTestUtils.mocks.getPipeCardsSuccessPage2.cards.edges.map(edge => edge.node)
           ]
+
           expect(cardsComponents.length).toEqual(allCardsFromBothPages.length)
 
           allCardsFromBothPages.forEach(card => {
