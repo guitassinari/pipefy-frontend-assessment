@@ -1,3 +1,6 @@
+# Test Coverage
+
+
 # The Assessment
 This assessment was build to validate your developer skills using our main stack (React + GraphQL). Keep in mind that UI and performance walk together to deliver the best experience.
 
