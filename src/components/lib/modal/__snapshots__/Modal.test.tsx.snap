@@ -3,7 +3,7 @@
 exports[`Modal matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL hbExxv"
+    class="sc-bdvvtL ffOZty"
   >
     <div
       class="sc-gsDKAQ bucHQF"
@@ -11,7 +11,7 @@ exports[`Modal matches snapshot 1`] = `
       Modal test
     </div>
     <div
-      class="sc-dkPtRN deWUNs"
+      class="sc-dkPtRN eGuCUl"
     />
   </div>
 </DocumentFragment>

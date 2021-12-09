@@ -7,10 +7,10 @@ export const AppContainer = styled.div`
 `
 
 export const MainContent = styled.main`
-  padding: 0 30px;
+  padding: 30px;
   max-width: ${Breakpoints.EXTRA_LARGE}px;
 
   @media(min-width: ${Breakpoints.EXTRA_LARGE}px) {
-    padding: 0
+    padding: 30px 0;
   }
 `

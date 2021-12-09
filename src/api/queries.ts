@@ -16,9 +16,14 @@ const GET_ORGANIZATION = gql`
 `
 
 const GET_PIPE_CARDS = gql`
-  query GetPipeCards($pipeId: ID!) {
-    cards(pipe_id: $pipeId) {
+  query GetPipeCards($pipeId: ID!, $pageSize: Int, $startAtCursor: String) {
+    cards(pipe_id: $pipeId, first: $pageSize, after: $startAtCursor) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
       edges {
+        cursor
         node {
           title
         }

@@ -3,7 +3,7 @@
 exports[`PipeTile allows custom styling 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL flRYvv className"
+    class="sc-bdvvtL kgCPtU className"
   >
     <div>
       Teste
@@ -15,7 +15,7 @@ exports[`PipeTile allows custom styling 1`] = `
 exports[`PipeTile allows setting the background color 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL fFSuzC"
+    class="sc-bdvvtL kJwlWd"
   >
     <div>
       Teste
@@ -27,7 +27,7 @@ exports[`PipeTile allows setting the background color 1`] = `
 exports[`PipeTile matches the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL flRYvv"
+    class="sc-bdvvtL kgCPtU"
   >
     <div>
       Teste

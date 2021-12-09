@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
+import { act, render, fireEvent } from '@testing-library/react';
 import PipeCardsModal from '.';
 import { Queries } from 'api';
 import { MockedProvider } from '@apollo/client/testing'
@@ -17,16 +17,30 @@ describe('PipeCardsModal', () => {
           request: {
             query: Queries.GET_PIPE_CARDS,
             variables: {
-              pipeId: pipe.id
+              pipeId: pipe.id,
+              pageSize: 5
             }
           },
           result: {
             data: ApolloTestUtils.mocks.getPipeCardsSuccess
           }
+        },
+        {
+          request: {
+            query: Queries.GET_PIPE_CARDS,
+            variables: {
+              pipeId: pipe.id,
+              pageSize: 5,
+              startAtCursor: ApolloTestUtils.mocks.getPipeCardsSuccess.cards.pageInfo.endCursor
+            }
+          },
+          result: {
+            data: ApolloTestUtils.mocks.getPipeCardsSuccessPage2
+          }
         }
       ]
 
-      it('loads the cards for that pipe and shows it in a modal', async () => {
+      it('loads the first 5 cards for that pipe and shows it in a modal', async () => {
         const { getAllByRole, getByText } = render(
           <MockedProvider mocks={QUERY_MOCKS}>
             <PipeCardsModal pipe={pipe} />
@@ -44,6 +58,39 @@ describe('PipeCardsModal', () => {
 
         cards.forEach(card => {
           expect(getByText(card.title)).toBeInTheDocument()
+        })
+      })
+
+      describe('when the "Show more" button is clicked', () => {
+        it('fetches the next page of cards and display them along with the preivous ones', async () => {
+          const { getAllByRole, getByRole, getByText } = render(
+            <MockedProvider mocks={QUERY_MOCKS}>
+              <PipeCardsModal pipe={pipe} />
+            </MockedProvider>
+          )
+              
+          await act(async () => {
+            await ApolloTestUtils.waitForApolloQueryToResolve()
+          })
+
+          const showMoreButton = getByRole('button', { name: 'Show more' })
+          fireEvent.click(showMoreButton)
+
+          await act(async () => {
+            await ApolloTestUtils.waitForApolloQueryToResolve()
+          })
+
+          const cardsComponents = getAllByRole('gridcell')
+
+          const allCardsFromBothPages = [
+            ...ApolloTestUtils.mocks.getPipeCardsSuccess.cards.edges.map(edge => edge.node),
+            ...ApolloTestUtils.mocks.getPipeCardsSuccessPage2.cards.edges.map(edge => edge.node)
+          ]
+          expect(cardsComponents.length).toEqual(allCardsFromBothPages.length)
+
+          allCardsFromBothPages.forEach(card => {
+            expect(getByText(card.title)).toBeInTheDocument()
+          })
         })
       })
     })

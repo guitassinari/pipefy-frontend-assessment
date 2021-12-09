@@ -7,7 +7,7 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
     role="grid"
   >
     <div
-      class="sc-bdvvtL flRYvv"
+      class="sc-bdvvtL kgCPtU"
       role="gridcell"
     >
       <div>
@@ -17,7 +17,7 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="sc-bdvvtL flRYvv"
+      class="sc-bdvvtL kgCPtU"
       role="gridcell"
     >
       <div>
@@ -27,7 +27,7 @@ exports[`PipeList When receives a valid list of pipes matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="sc-bdvvtL flRYvv"
+      class="sc-bdvvtL kgCPtU"
       role="gridcell"
     >
       <div>
