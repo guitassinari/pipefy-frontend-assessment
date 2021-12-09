@@ -13,7 +13,6 @@ interface PipeCardsModalProps extends ModalProps {
 const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe, ...rest }) => {
   const [cards, setCards] = useState<Card[]>([])
   const { loading, error, data, fetchMore } = useQuery(Queries.GET_PIPE_CARDS, {
-    fetchPolicy: 'network-only',
     variables: {
       pipeId: pipe.id,
       pageSize: 5
@@ -54,6 +53,7 @@ const PipeCardsModal: React.FC<PipeCardsModalProps> = ({ pipe, ...rest }) => {
       <div>Oops. Something went wrong!</div>
     </Modal>
   }
+
 
   return (
     <Modal {...rest} primaryAction={() => fetchNextPage()} customPrimaryActionText="Show more">
